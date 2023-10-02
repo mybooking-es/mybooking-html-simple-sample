@@ -1,0 +1,138 @@
+/**
+*
+* Basic reset
+*
+*/
+* {
+	box-sizing: border-box;
+	outline: none;
+	padding: 0;
+	margin: 0;
+}
+
+/**
+*
+* Site styles
+*
+*/
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+h1  {
+	padding: 1rem;
+}
+
+a:link {
+	color: green;
+}
+
+/**
+*
+* Root variables override
+*
+*/
+:root {
+	--mb-accent-color: green;
+	--mb-info-color: var(--mb-accent-color);
+	--mb-primary-selected-date: #2193f2;
+	--mb-secondary-selected-date: #9cdbf7;
+	--mb-success-color: #3DD992;
+	--mb-danger-color: #E6546E;
+	--mb-warning-color: #FFB74D;
+	--mb-lighter-color: #EEEEEE;
+	--mb-light-color: #DDDDDD;
+	--mb-muted-color: #666;
+	--mb-border-color: #DDD;
+	--mb-border-radius: 5px;
+	--mb-background-color: #EEE;
+	--mb-dark-background-color: #424242;
+	--mb-negative-text-color: #FFF;
+	--mb-form-field-height: 42px;
+	--mb-form-field-border-color: var(--mb-border-color);
+	--mb-form-field-background: white;
+	--mb-selector-label-color: currentcolor;
+	--mb-selector-padding: 2rem;
+	--mb-selector-background: white;
+	--mb-selector-border-color: var(--mb-form-field-border-color);
+	--mb-selector-field-height: var(--mb-form-field-height);
+	--mb-selector-promo-border: var(--mb-form-field-border-color);
+	--mb-selector-promo-bg: white;
+	--mb-selector-promo-opacity: 1;
+	--mb-product-separation: 0.7rem;
+	--mb-product-background: transparent;
+	--mb-product-border-color: var(--mb-border-color);
+	--mb-product-info-color: #ffffff;
+	--mb-product-image-height: 250px;
+	--mb-product-image-width-img: 100%;
+	--mb-product-image-fit: contain;
+	--mb-product-image-padding: 20px;
+	--mb-product-header-height: 75px;
+	--mb-product-body-height: 140px;
+	--mb-product-footer-height: 76px;
+	--mb-product-btn-height: 50px;
+	--mb-product-list-left-width: 50%;
+	--mb-product-list-right-width: 50%;
+	--mb-product-list-image-height: 100%;
+	--mb-product-list-header-height: 70px;
+	--mb-product-list-body-height: 190px;
+	--mb-product-list-footer-height: 76px;
+	--mb-product-custom-message-bg: rgba(255,255,255,0.7);
+	--mb-product-custom-message-color: currentcolor;
+	--mb-product-name-size: 1em;
+	--mb-product-name-width: 300px;
+	--mb-product-description-width: 300px;
+	--mb-product-price-color: var(--mb-info-color);
+	--mb-product-price-size: 1.3em;
+	--mb-product-quantity-color: #2193F2;
+	--mb-product-list-price-size: 1.3em;
+	--mb-product-list-name-size: 1.15em;
+	--mb-product-list-name-width: 350px;
+	--mb-product-list-description-width: 350px;
+	--mb-product-list-keys-width: auto;
+	--mb-product-list-keys-icon-width: 25px;
+	--mb-product-list-key-show: inherit;
+	--mb-product-keys-icon-width: 25px;
+	--mb-product-keys-icon-width-page: 40px;
+	--mb-product-info-border: var(--mb-border-color);
+	--mb-product-info-background: transparent;
+	--mb-product-detail-bg: transparent;
+	--mb-product-detail-border: var(--mb-border-color);
+	--mb-product-detail-color: currentcolor;
+	--mb-product-total-border: var(--mb-border-color);
+	--mb-product-total-bg: transparent;
+	--mb-product-total-color: currentcolor;
+	--mb-product-total-amount-size: 1.4em;
+	--mb-product-total-amount-color: var(--mb-info-color);
+	--mb-product-activity-route-max-width: none;
+	--mb-product-activity-route-margin: none;
+	--mb-catalog-price-height: 40px;
+	--mb-catalog-price-bg: #0066BF;
+	--mb-catalog-price-color: var(--mb-negative-text-color);
+	--mb-calendar-step-bg: var(--mb-dark-background-color);
+	--mb-calendar-step-color: var(--mb-negative-text-color);
+	--mb-calendar-step-radius: 50%;
+	--mb-calendar-available: var(--mb-success-color);
+	--mb-calendar-available-hover: var(--mb-info-color);
+	--mb-calendar-booked: var(--mb-danger-color);
+	--mb-calendar-disabled: var(--mb-background-color);
+	--mb-calendar-first-last-date: var(--mb-primary-selected-date);
+	--mb-calendar-checked-date: var(--mb-secondary-selected-date);
+	--mb-payment-option-btn-bg: var(--mb-dark-background-color);
+	--mb-payment-option-btn-color: var(--mb-negative-text-color);
+	--mb-summary-locator-color: var(--mb-info-color);
+	--mb-popup-background: #FFF;
+	--mb-popup-width-desk: 50vw;
+	--mb-popup-height-desk: auto;
+	--mb-popup-width-mobile: 90vw;
+	--mb-popup-height-mobile: 90vh;
+	--mb-popup-close-btn-color: currentcolor;
+	--mb-popup-close-btn-size: 2em;
+	--mb-cookies-background: #FFF;
+	--mb-cookies-color: currentcolor;
+	--mb-cookies-btn-background: var(--mb-dark-background-color);
+	--mb-cookies-btn-color: var(--mb-negative-text-color);
+	--mb-wizard-bg-color: white;
+	--mb-wizard-content-width: 900px;
+}

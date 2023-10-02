@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Buscador</title>
+
+		<!-- ==== STYLES CSS ==== -->
+		<!-- Mybooking -->
+		<link rel='stylesheet' id='mybooking_wp_css_components_jqueryui-css'
+			href='./assets/styles/jquery-ui-1.10.0.custom.css?ver=6.3.1' media='all' />
+		<link rel='stylesheet' id='mybooking_wp_css_components_mybooking-engine-css'
+			href='./assets/styles/mybooking-engine.css?ver=1.10.4' media='all' />
+		<link rel='stylesheet' id='mybooking_wp_css_components_mybooking-engine-helpers-css'
+			href='./assets/styles/mybooking-engine-helpers.css?ver=1.10.4' media='all' />
+		<link rel='stylesheet' id='mybooking_wp_css_components_mybooking-engine-selector-css'
+			href='./assets/styles/mybooking-engine-selector.css?ver=1.10.4' media='all' />
+		<link rel='stylesheet' id='mybooking_wp_css_components_mybooking-engine-components-css'
+			href='./assets/styles/mybooking-engine-components.css?ver=1.10.4' media='all' />
+		<link rel="stylesheet" href="./assets/styles/site-styles.css" media='all' />
+		<!-- ==== END STYLES CSS ==== -->
+
+	</head>
+	<body class="mybooking-selector-widget">
+		<div class="mb-row">
+			<div class="mb-col-md-12">
+				<h1>
+					Buscador
+				</h1>
+				<section class="mybooking mybooking-selector mybooking-selector_vertical">
+							<form class="mybooking-selector_form" name="widget_search_form" method="get"
+								enctype="application/x-www-form-urlencoded">
+				
+								<!-- // PICKUP SECTION -->
+						
+								<div class="mybooking-selector_group">
+									<div class="mybooking-selector_place">
+					
+											<!-- // Delivery place -->
+											<label for="pickup_place">
+												Lugar de entrega					</label>
+						
+											<!-- // List pickup place -->
+											<div class="widget_pickup_place_group">
+												<select class="mb-form-control" id="widget_pickup_place" name="pickup_place" ></select>
+											</div>
+						
+											<!-- // Custom delivery place -->
+											<div id="widget_another_pickup_place_group" style="display: none;">
+												<button class="mybooking-selector_close-btn widget_another_pickup_place_group_close">
+													<i>
+														<span class="dashicons dashicons-dismiss"></span>
+													</i>
+												</button>
+												<input class="mb-form-control" id="widget_pickup_place_other" type="text" name="pickup_place_other" />
+												<input type="hidden" name="custom_pickup_place" value="false" />
+											</div>
+						
+									</div>
+						
+									<div class="mybooking-selector_date">
+						
+										<!-- // Pickup date -->
+										<div class="mybooking-selector_cal">
+											<label for="date_from">
+												Fecha entrega					</label>
+											<input class="mb-form-control" type="text" name="date_from" id="widget_date_from" autocomplete="off" readonly="true" placeholder="dd/mm/aa">
+										</div>
+						
+										<!-- // Pickup time -->
+											<div class="mybooking-selector_hour">
+												<label for="time_from">
+													Hora entrega					</label>
+											<select class="mb-form-control" id="widget_time_from" name="time_from"></select>
+											</div>
+									</div>
+								</div>
+						
+						
+								<!-- // RETURN SECTION -->
+						
+								<div class="mybooking-selector_group">
+									<div class="mybooking-selector_place">
+						
+											<!-- // Return place -->
+											<label for="return_place">
+												Lugar de devolución					</label>
+						
+											<!-- // List return place -->
+											<div class="widget_return_place_group">
+												<select class="mb-form-control" name="return_place" id="widget_return_place"></select>
+											</div>
+						
+											<!-- // Custom delivery place -->
+											<div id="widget_another_return_place_group" style="display: none;">
+												<button class="mybooking-selector_close-btn widget_another_return_place_group_close">
+													<i>
+														<span class="dashicons dashicons-dismiss"></span>
+													</i>
+												</button>
+												<input class="mb-form-control" id="widget_return_place_other" type="text" name="return_place_other" />
+												<input type="hidden" name="custom_return_place" value="false" />
+											</div>
+						
+									</div>
+						
+									<div class="mybooking-selector_date">
+						
+										<!-- // Return date -->
+										<div class="mybooking-selector_cal">
+											<label for="date_to">
+												Fecha devolución						</label>
+											<input type="text" class="mb-form-control" name="date_to" id="widget_date_to" autocomplete="off" readonly="true" placeholder="dd/mm/aa">
+										</div>
+					
+										<!-- // Return time -->
+										<div class="mybooking-selector_hour">
+											<label for="time_to">
+												Hora devolución					</label>							
+											<select class="mb-form-control" name="time_to" id="widget_time_to"></select>
+										</div>
+										
+									</div>
+				
+								</div>
+						
+						
+								<!-- // FOOTER -->
+						
+								<div class="mybooking-selector_group mybooking-selector_footer">
+									<!-- // Search button -->
+									<input class="mb-button mybooking-selector_button" type="submit" value="Buscar" />
+								</div>
+				
+							</form>
+				</section>
+			</div>
+		</div>
+
+		<!-- ==== SCRIPTS ==== -->
+		<!-- Data -->
+		<script src="./assets/js/init-vars.js"></script>
+
+		<!-- Vendor -->
+		<script src="./assets/js/moment.min.js"></script>
+		<script src="./assets/js/moment-timezone-with-data.min.js"></script>
+		<script src="./assets/js/jquery.min.js"></script>
+		<script src="./assets/js/jquery-migrate.min.js"></script>
+		<script src="./assets/js/jquery-ui.min.js"></script>
+		<script src="./assets/js/datepicker.min.js"></script>
+
+		<!-- Mybooking -->
+		<script src="./assets/js/mybooking-init.js"></script>
+		<script src="./assets/js/mybooking-js-engine-rent-selector-bundle.js"></script>
+		<!-- ==== END SCRIPTS ==== -->
+		
+	</body>
+</html>
