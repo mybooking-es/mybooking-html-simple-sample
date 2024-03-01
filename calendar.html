@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Buscador</title>
+
+		<!-- ==== STYLES CSS ==== -->
+		<!-- Mybooking -->
+		<link rel='stylesheet' id='mybooking_wp_css_components_jqueryui-css'
+			href='./assets/styles/jquery-ui-1.10.0.custom.css?ver=6.3.1' media='all' />
+		<link rel='stylesheet' id='mybooking_wp_css_components_mybooking-engine-css'
+			href='./assets/styles/mybooking-engine.css?ver=1.10.4' media='all' />
+		<link rel='stylesheet' id='mybooking_wp_css_components_mybooking-engine-helpers-css'
+			href='./assets/styles/mybooking-engine-helpers.css?ver=1.10.4' media='all' />
+		<link rel='stylesheet' id='mybooking_wp_css_components_mybooking-engine-selector-css'
+			href='./assets/styles/mybooking-engine-selector.css?ver=1.10.4' media='all' />
+		<link rel='stylesheet' id='mybooking_wp_css_components_mybooking-engine-components-css'
+			href='./assets/styles/mybooking-engine-components.css?ver=1.10.4' media='all' />
+		<link rel="stylesheet" href="./assets/styles/site-styles.css" media='all' />
+		<!-- ==== END STYLES CSS ==== -->
+
+	</head>
+	<body class="mybooking-product">
+		<div class="mb-row">
+			<div class="mb-col-md-12">
+				<h1>
+					Calendario
+				</h1>
+				<section class="mybooking">
+          <div id="product_selector" data-code="1" class="mybooking mybooking-product_calendar_container">
+            <form
+                  name="search_form"
+                  method="get"
+                  enctype="application/x-www-form-urlencoded"
+                  class="mybooking-form mybooking-product_calendar">                           
+            </form>            
+          </div>
+				</section>
+			</div>
+		</div>
+
+		<!-- ==== SCRIPTS ==== -->
+		<!-- Data -->
+		<script src="./assets/js/init-vars.js"></script>
+
+		<!-- Vendor -->
+		<script src="./assets/js/moment.min.js"></script>
+		<script src="./assets/js/moment-timezone-with-data.min.js"></script>
+		<script src="./assets/js/jquery.min.js"></script>
+		<script src="./assets/js/jquery-migrate.min.js"></script>
+		<script src="./assets/js/jquery-ui.min.js"></script>
+		<script src="./assets/js/datepicker.min.js"></script>
+
+		<!-- Mybooking -->
+		<script src="./assets/js/mybooking-init.js"></script>
+		<script src="./assets/js/mybooking-js-engine-bundle.js"></script>
+		<!-- ==== END SCRIPTS ==== -->
+		
+    <script type="text/tmpl" id="form_calendar_selector_tmpl">
+
+      <ol class="mybooking-product_calendar-step-list mb-section">
+      
+        <li class="mybooking-product_calendar-step">
+          Seleccionar las fechas
+        </li>
+        <input type="hidden" name="duration_scope" value="days">
+   
+        <!-- // Date Selector -->
+        <div class="mb-form-group">
+          <input id="date" type="hidden" name="date"/>
+          <br/>
+          <div id="mb-date-container-header" style="display:none"></div>
+          <div id="date-container" class="mb-date-container-content disabled-picker"></div>
+        </div>
+        <input type="hidden" name="time_from" value="<%=configuration.defaultTimeStart%>"/>
+        <input type="hidden" name="time_to" value="<%=configuration.defaultTimeEnd%>"/>
+        
+      </ol>
+    
+      <div id="reservation_detail" class="mb-form-group"></div>
+    </script>
+
+    <script type="text/tmpl" id="script_reservation_summary">
+
+      <!-- // Exceeds max duration -->
+      <% if (product && product.exceeds_max) { %>
+         <div class="mb-alert danger">
+            <span><%= i18next.t('chooseProduct.max_duration', {duration: i18next.t('common.'+product.price_units, {count: product.max_value, interpolation: {escapeValue: false}} ), interpolation: {escapeValue: false}}) %></span>
+         </div>
+  
+      <!-- // Less than min duration -->
+      <% } else if (product && product.be_less_than_min) { %>
+         <div class="mb-alert danger">
+            <span><%= i18next.t('chooseProduct.min_duration', {duration: i18next.t('common.'+product.price_units, {count: product.min_value, interpolation: {escapeValue: false}} ), interpolation: {escapeValue: false}}) %></span>
+         </div>
+  
+      <!-- // Available -->
+      <% } else if (product_available) { %>
+        <h2 class="mybooking-summary_details-title">
+          Resumen
+        </h2>
+  
+        <div class="mybooking-summary_detail">
+  
+          <!-- // Duration -->
+          <div class="mybooking-summary_extras">
+            <span class="mybooking-summary_item">
+              <span class="mybooking-summary_duration">
+                Duración
+              </span>
+            </span>
+          </div>
+  
+  
+        </div>
+  
+        <!-- // Product -->
+        <% if (!configuration.hidePriceIfZero || shopping_cart.item_cost > 0) { %>
+          <div class="mybooking-summary_extras mb-section">
+            <span class="mybooking-summary_item">
+              Producto:
+            </span>
+              <span class="mybooking-summary_extra-amount">
+                <%=configuration.formatCurrency(shopping_cart.item_cost)%>
+              </span>
+          </div>
+        <% } %>
+  
+        <!-- // Extras -->
+  
+        <% if (shopping_cart.extras.length > 0) { %>
+          <div class="mb-section">
+            <div class="mybooking-summary_details-title">
+              Extras
+            </div>
+  
+            <% for (var idx=0;idx<shopping_cart.extras.length;idx++) { %>
+              <div class="mybooking-summary_extras">
+                <div class="mybooking-summary_extra-item">
+                  <span class="mb-badge info mybooking-summary_extra-quantity">
+                    <%=shopping_cart.extras[idx].quantity%>
+                  </span>
+                  <span class="mybooking-summary_extra-name">
+                    <%=shopping_cart.extras[idx].extra_description%>
+                  </span>
+                </div>
+                <span class="mybooking-summary_extra-amount">
+                  <%=configuration.formatCurrency(shopping_cart.extras[idx].extra_cost)%>
+                </span>
+              </div>
+            <% } %>
+          </div>
+        <% } %>
+  
+        <!-- // Supplements -->
+        
+        <% if (!configuration.hidePriceIfZero || shopping_cart.total_cost > 0) { %>
+          <!-- // Total -->
+          <div class="mb-section">
+            <div class="mybooking-summary_total">
+              <div class="mybooking-summary_total-label">
+                Total
+              </div>
+              <div class="mybooking-summary_total-amount">
+                <%=configuration.formatCurrency(shopping_cart.total_cost)%>
+              </div>
+            </div>
+
+          </div>
+        <% } %>
+  
+        <!-- // Reservation button -->
+  
+        <div class="mb-form-group">
+           <input id="add_to_shopping_cart_btn" class="mb-button block btn-choose-product" type="submit" value="Reservar"/>
+        </div>
+  
+      <% } else { %>
+        <% if (product_type == 'resource') { %>
+          <div class="mb-alert danger">
+            Lo sentimos no hay disponibilidad
+          </div>
+  
+        <% } else if (product_type == 'category_of_resources') { %>
+          <div class="mb-alert warning">
+            Lo sentimos no hay disponibilidad
+          </div>
+        <% } %>
+      <% } %>
+  </script>
+
+	</body>
+</html>
